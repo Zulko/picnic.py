@@ -1,7 +1,7 @@
 Picnic - Let's sit there !
 ==========================
 
-Picnic is a simple template engine for writing python modules. In a console you type ::
+Picnic is a simple template engine for writing python modules. You open a console and in any folder you type ::
     
     picnic.py ModuleName
 
@@ -10,7 +10,7 @@ and it will produce the following folder, with (almost ?) everything you need to
     /ModuleName
         /modulename
             /__init__.py
-            /modulename.py
+            /modulename.py # A file for the actual code
         /setup.py
         /README.rst
         /LICENCE.txt
@@ -18,6 +18,8 @@ and it will produce the following folder, with (almost ?) everything you need to
         /ez_setup.py # for Setuptools  
 
 The created package is configured to work with Setuptools because Setuptools rocks.
+
+
 
 Options
 --------
@@ -53,4 +55,15 @@ Or even better, you can use this command, which will enable you to change the mo
 
     sudo python picnic.py develop
 
+To test if it works go to any folder and type ::
+    
+    picnic.py TestModule
 
+Contribute
+-----------
+
+Picnic is an open source software originally written by Zulko_ and released under the MIT licence. Please help make picnic better, for instance by expanding the capabilities, providing advice for sounder standards if you are an experienced module-maker, reporting bugs, etc. We love forks and pull resquests !
+Picnic is being developped on Github_, that's where you should go for troubleshooting and bug reports.
+
+.. _Zulko : https://github.com/Zulko
+.. _Github :  https://github.com/Zulko/picnic.py
