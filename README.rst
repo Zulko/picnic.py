@@ -28,7 +28,7 @@ Two useful options are ``-git`` and ``-dev`` (the order doesn't matter): ::
     
     picnic.py ModuleName -git -dev
 
-The ``-git`` option will initialize a git repository will the newly created module (if ``git`` is installed): ::
+The ``-git`` option will initialize a git repository with the newly created module (requires ``git`` installed): ::
     
     # it will run these lines in the ModuleName folder
     git init
@@ -46,7 +46,7 @@ Installation and customization
 From the source
 ''''''''''''''''
 
-Get a zip of the code, for instance on Github_ . Unzip the code in some folder. You can the models of the files ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files`` and change them as you like.
+Get a zip of the code, for instance on Github_ . Unzip the code in some folder. You can check the models of the files ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files`` and change them as you like.
 Then use the following command in the folder where the ``setup.py`` is ::
 
     sudo python picnic.py install
