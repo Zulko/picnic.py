@@ -56,7 +56,7 @@ Or even better, use this command instead, it will enable you to change the model
     sudo python picnic.py develop
 
 
-With pip (not recommanded)
+With pip (not recommended)
 '''''''''''''''''''''''''''
 
 Type this in a terminal ::
