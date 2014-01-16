@@ -1,80 +1,165 @@
-Picnic
-=======
 
-Picnic is a simple template engine for writing python modules. You open a console and in any folder you type ::
+Picnic.py
+==========
+
+Picnic.py helps you write python packages: ::
     
-    picnic.py ModuleName
+    picnic.py new PackageName
 
-and it will produce the following folder, with (almost ?) all the files you need. All there is left to do is write the actual code : ::
-
-    /ModuleName
-        /modulename
-            /__init__.py
-            /modulename.py # A file for the actual code
-        /setup.py
-        /README.rst
-        /LICENCE.txt
-        /MANIFEST.in 
-        /ez_setup.py # for Setuptools  
-
-The created package is configured to work with Setuptools because Setuptools rocks.
-
-
-
-Options
---------
-
-Two useful options are ``-git`` and ``-dev`` (the order doesn't matter): ::
+This creates a directory with all the files you need to get started: ::
     
-    picnic.py ModuleName -git -dev
+    /PackageName_project
+        /PackageName
+            /setup.py
+            /README.rst
+            /packagename
+                /__init__.py
+                /packagename.py
 
-The ``-git`` option will initialize a git repository with the newly created module (requires ``git`` installed): ::
+Not enough ? Try this: ::
+
+    picnic.py new MyPackage --author=Zulko --sphinx --gitinit --dev
+
+Now you have a new package with a Sphinx documentation and a git repository for your project. And your package has been installed on your computer in *develop* mode (meaning you can change the code directly from this folder, without needing to reinstall the project).
+
+These commands **also work on already-written packages**. For instance if I go in the ``setup.py``  folder and type ::
     
-    # it will run these lines in the ModuleName folder
+    picnic.py --remote=https://github.com/Zulko/MyPackage.git --gh-pages
+
+
+This will link my project to an existing Github repository and initialize the Github Pages for this project. Now I just need to push these on Github (see Cookbook below), which will give me `this repo <https://github.com/Zulko/MyPackage>`_ for the code, and `this page <http://zulko.github.io/MyPackage>`_ for the online documentation (you can change the look afterwards).
+
+
+Cookbook  
+---------
+
+In this section, which is meant for beginners in Python, Sphinx, git, and Github, we explain how the files created by Picnic.py are meant to be used. You can also get help from the console with ::
+
+    picnic.py --help
+
+
+Creating a Python package
+''''''''''''''''''''''''''''
+
+To start a new project, you type ::
+
+    picnic.py new PackageName
+
+To install the package (you will be able to modify the code afterwards) type ::
+    
+    python setup.py develop
+
+or equivalently ::
+    
+    picnic.py --dev
+    
+Now we can start to code: we go in directory ``PackageName/packagename`` and in the file ``packagename.py`` we write ::
+
+    def say_hello():
+        print "Hello world !"
+    
+To check that this worked, open a python console (in any folder) and type ::
+    
+    >>> import packagename
+    >>> packagename.say_hello()
+     Hello World !
+
+
+
+Creating a Sphinx documentation
+'''''''''''''''''''''''''''''''''
+
+To initialize the Sphinx_ documentation you type ::
+    
+    picnic.py [new PackageName] --author="Your Name" --sphinx
+
+The documentation source will be in the ``docs`` directory and the built (html) doc will be in the folder ``built_docs/html/``. To preview the docs after you have made some changes you can go into the ``docs`` repository and type ::
+
+    make html
+    firefox ../../built_docs/html/index.html
+
+For convenience these two lines are already written in the ``docs/make_html.sh`` file, therefore you only need to type ::
+    
+    ./make_html.sh
+
+
+Creating a git repository
+''''''''''''''''''''''''''''''''''
+
+To create a git repository the classic way, you generally add a  ``.gitignore`` file to your folder (to specify what kind of files not to include in the repo) and type these lines ::
+    
     git init
     git add .
     git commit -m "Initial commit"
-    # it will also create a python-specific .gitignore file
-
-The ``-dev`` option will run the following command at the end to install the newly created module in *develop* mode (i.e. you can do your changes on the module without needing to reinstall the module each time to test it) ::
     
-    sudo python setup.py develop
+The ``--git`` option does exactly all this: it adds a .gitignore file to the folder and runs all these commands. Be sure to run it in the directory where your ``setup.py`` is.
+
+Linking to a repository on Github
+''''''''''''''''''''''''''''''''''
+
+
+To put this git repository on a Github, first create a repo on Github (say no when they ask you whether to include a README file). Github should give you the url of the repo, something like ``https://github.com/Zulko/MyPackage.git``. Then in a console type ::
+
+    git add remote origin https://github.com/Zulko/MyPackage.git
+
+or equivalently ::
+
+    picnic.py --remote=https://github.com/Zulko/MyPackage.git
+
+To commit the changes to the git repo I generally do ::
+    
+    git commit -a -m "my description of the commit"
+    
+And after this, to push the changes on the online Github repo:
+
+    git push origin master
+
+
+Creating Github-pages
+'''''''''''''''''''''''
+
+Here we suppose that you have already linked your project to Github with ::
+
+    git add remote origin https://link/to/your/repo.git
+    
+or equivalently ::
+
+    picnic.py --remote=https://link/to/your/repo.git
+
+Now all you have to do is ::
+    
+    picnic.py --gh-pages
+
+This creates a special git repository for the Github Pages in the directory ``built_docs/html``, which is the output directory of the documentation.
+
+When you are happy with the way your documentation looks you go into folder ``built_docs/html`` and type ::
+
+    git commit -a -m "my description of the commit"
+    git push origin gh-pages
+
+That's all there is to know !
+
+
+
 
 Installation and customization
 --------------------------------
 
-From the source
-''''''''''''''''
+Picnic.py requires the awesome docopt_ package, that you can install with the classic ::
 
-Get a zip of the code, for instance on Github_ .
+    pip python install docopt 
 
-Unzip the code in some folder. You can check the models of the files ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files`` and change them as you like.
+To install Picnic.py, get a zip of the code, for instance on Github_, and unzip it in some folder. You can have a look at the file templates ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files``, and customize them as you like.
 
-Then use the following command in the folder where the ``setup.py`` is ::
+Then, in the folder of the ``setup.py``, type ::
 
     sudo python setup.py install
 
-Or even better, use this command instead, it will enable you to change the models of the files even after the installation: :: 
+or even better, use this command instead, it will enable you to change the templates even after the installation: :: 
 
     sudo python setup.py develop
 
-
-With pip (not recommended)
-'''''''''''''''''''''''''''
-
-Type this in a terminal ::
-
-    sudo pip install picnic
-
-The problem with this installation is that you cannot customize the templates.
-
-Test
-'''''
-
-To test if it works go to any folder and type ::
-    
-    picnic.py TestModule
-
+Note that you can also install ``picnic.py`` with ``pip`` but it is not recommended as it doesn't allow you to change the templates.
 
 
 Contribute
@@ -84,4 +169,6 @@ Picnic is an open source software originally written by Zulko_ and released unde
 Picnic is being developped on Github_, that's where you should go for troubleshooting and bug reports.
 
 .. _Zulko : https://github.com/Zulko
-.. _Github :  https://github.com/Zulko/picnic.py
+.. _Github : https://github.com/Zulko/picnic.py
+.. _Sphinx : http://sphinx-doc.org/
+.. _docopt: http://docopt.org/

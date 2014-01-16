@@ -4,11 +4,11 @@ ez_setup.use_setuptools()
 from setuptools import setup, find_packages
 
 setup(name='picnic',
-      version='0.0.0.2',
-      author='Zulko 2013',
-     description='Module for easy python modules creation',
+      version='0.0.0.3',
+      author='Zulko 2014',
+     description='Python packages creation made easy',
      long_description=open('README.rst').read(),
-     license='LICENSE.txt',
-     keywords="python module template engine setuptools",
+     license='see LICENSE.txt',
+     keywords="python module package template engine setuptools",
      scripts=['picnic/picnic.py'],
      packages= find_packages(exclude='docs'))	
