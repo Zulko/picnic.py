@@ -95,6 +95,7 @@ if __name__ == "__main__":
         
         # basic layout
         
+        # make folder Name_project/Name/ and move there
         project_dir = name+'_project' 
         os.mkdir(project_dir)
         os.chdir(project_dir)
@@ -111,7 +112,7 @@ if __name__ == "__main__":
                    "ez_setup.py"]:
             copy_file(f, replace=infos)
 
-        # code repository
+        # make the code folder (named like the package, in lower case)
         os.mkdir(name_l)
         copy_file(['code','package_name.py'],
                   [name_l,name_l +'.py'], replace = infos)
@@ -120,8 +121,9 @@ if __name__ == "__main__":
     
     
     
-    # OPTIONS
+    ### OPTIONS
     
+    # keep the absolute path of the setup directory in memory
     setup_dir = os.getcwd()
     
     
@@ -192,6 +194,9 @@ if __name__ == "__main__":
         f = sp.Popen([ 'git', "remote", "-v"], stdout = sp.PIPE)
         github_url = f.stdout.read().split('\t')[1].split(' ')[0]
         
+        
+        # Look at the folder ../built_docs/html, it it exists destroy
+        # it and rebuild it
         built_docs_dir = os.path.join('..','built_docs')
         if not os.path.exists(built_docs_dir):
             os.mkdir(buit_docs_dir)
@@ -203,10 +208,15 @@ if __name__ == "__main__":
         os.chdir(built_docs_html_dir)
         built_docs_html_dir = os.getcwd()
         
+        # Create an orphan branch of the project in ../built_docs/html
         execute('git clone %s %s'%(github_url, '.'),
                 "git checkout --orphan gh-pages",
                 "git rm -rf .")
+        
+        # Add a README (for the Github repo page)
         copy_file(['gh-pages','README.rst'], 'README.rst', infos)
+        # Add a .nojekill file so that Github won't throw away the css
+        copy_file(['gh-pages','.nojekyll'], '.nojekyll')
         
         try:
             # try to (re-)build the docs
@@ -217,10 +227,11 @@ if __name__ == "__main__":
             print "Picnic.py: Error - couldn't  build the docs."
             os.chdir(built_docs_html_dir)
         
+        # Make a first commit with everything
         execute("git add .",
                 'git commit -a -m "First documentation commit"')
-        os.chdir(setup_dir)
-    
+        
+        os.chdir(setup_dir) # back to 'main' folder
     
     
     if argv['--dev'] :
