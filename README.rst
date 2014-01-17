@@ -30,6 +30,26 @@ These commands **also work on already-written packages**. For instance if I go i
 This will link my project to an existing Github repository and initialize the Github Pages for this project. Now I just need to push these on Github (see Cookbook below), which will give me `this repo <https://github.com/Zulko/MyPackage>`_ for the code, and `this page <http://zulko.github.io/MyPackage>`_ for the online documentation (you can change the look afterwards).
 
 
+Installation and customization
+--------------------------------
+
+Picnic.py requires the awesome docopt_ package, that you can install with the classic ::
+
+    pip python install docopt 
+
+To install Picnic.py, get a zip of the code, for instance on Github_, and unzip it in some folder. You can have a look at the file templates ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files``, and customize them as you like.
+
+Then, in the folder of the ``setup.py``, type ::
+
+    sudo python setup.py install
+
+or even better, use this command instead, it will enable you to change the templates even after the installation: :: 
+
+    sudo python setup.py develop
+
+And you are done ! Note that you can also install ``picnic.py`` with ``pip`` but it is not recommended as it doesn't allow you to change the templates.
+
+
 Cookbook  
 ---------
 
@@ -138,29 +158,6 @@ When you are happy with the way your documentation looks you go into folder ``bu
     git push origin gh-pages
 
 That's all there is to know !
-
-
-
-
-Installation and customization
---------------------------------
-
-Picnic.py requires the awesome docopt_ package, that you can install with the classic ::
-
-    pip python install docopt 
-
-To install Picnic.py, get a zip of the code, for instance on Github_, and unzip it in some folder. You can have a look at the file templates ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files``, and customize them as you like.
-
-Then, in the folder of the ``setup.py``, type ::
-
-    sudo python setup.py install
-
-or even better, use this command instead, it will enable you to change the templates even after the installation: :: 
-
-    sudo python setup.py develop
-
-Note that you can also install ``picnic.py`` with ``pip`` but it is not recommended as it doesn't allow you to change the templates.
-
 
 Contribute
 -----------

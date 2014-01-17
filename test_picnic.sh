@@ -1,4 +1,4 @@
-# This test example supposes that you have
+# This Picnic.py test example supposes that you have
 # - installed Sphinx and git
 # - created a repo on Github called MyPackage (change url below)
 #
@@ -14,9 +14,8 @@ cd MyPackage_project/MyPackage
 picnic.py --remote=https://github.com/Zulko/MyPackage.git --ghpages
 
 # Push the Repository on Github
-cd MyPackage_project/MyPackage/
 git push origin master
 
 # Push the Github Pages on Github
-cd ../built_project/html
+cd ../built_docs/html
 git push origin gh-pages

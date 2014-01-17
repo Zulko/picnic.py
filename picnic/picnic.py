@@ -146,7 +146,7 @@ if __name__ == "__main__":
         
         if not argv['--author']:
             
-            print "sphinx requires --author=<name>"
+            print ("sphinx requires --author=<name>")
         
         else:
             
@@ -224,7 +224,7 @@ if __name__ == "__main__":
             execute('make html')
             os.chdir(built_docs_html_dir)
         except:
-            print "Picnic.py: Error - couldn't  build the docs."
+            print ("Picnic.py: Error - couldn't  build the docs.")
             os.chdir(built_docs_html_dir)
         
         # Make a first commit with everything
