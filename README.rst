@@ -24,7 +24,7 @@ Now you have a new package with a Sphinx documentation and a git repository for 
 
 These commands **also work on already-written packages**. For instance if I go in the ``setup.py``  folder and type ::
     
-    picnic.py --remote=https://github.com/Zulko/MyPackage.git --gh-pages
+    picnic.py --remote=https://github.com/Zulko/MyPackage.git --ghpages
 
 
 This will link my project to an existing Github repository and initialize the Github Pages for this project. Now I just need to push these on Github (see Cookbook below), which will give me `this repo <https://github.com/Zulko/MyPackage>`_ for the code, and `this page <http://zulko.github.io/MyPackage>`_ for the online documentation (you can change the look afterwards).
@@ -161,7 +161,7 @@ or equivalently ::
 
 Now all you have to do is ::
     
-    picnic.py --gh-pages
+    picnic.py --ghpages
 
 This creates a special git repository for the Github Pages in the directory ``built_docs/html``, which is the output directory of the documentation.
 
