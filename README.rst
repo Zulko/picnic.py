@@ -30,6 +30,7 @@ These commands **also work on already-written packages**. For instance if I go i
 This will link my project to an existing Github repository and initialize the Github Pages for this project. Now I just need to push these on Github (see Cookbook below), which will give me `this repo <https://github.com/Zulko/MyPackage>`_ for the code, and `this page <http://zulko.github.io/MyPackage>`_ for the online documentation (you can change the look afterwards).
 
 
+
 Installation and customization
 --------------------------------
 
@@ -48,6 +49,18 @@ or even better, use this command instead, it will enable you to change the templ
     sudo python setup.py develop
 
 And you are done ! Note that you can also install ``picnic.py`` with ``pip`` but it is not recommended as it doesn't allow you to change the templates.
+
+
+Contribute !
+------------
+
+Picnic.py is an open source software originally written by Zulko_ and released under the MIT licence. Please help make picnic better, for instance by expanding the capabilities, providing advice for sounder standards if you are an experienced module-maker, reporting bugs, etc. We love forks and pull resquests !
+
+And speaking about branches, there is `another one <https://github.com/jcsaaddupuy/picnic.py/tree/dev>`_ being actively developed.
+
+Picnic is being developped on Github_. That's where you should go for troubleshooting and bug reports.
+
+
 
 
 Cookbook  
@@ -159,11 +172,6 @@ When you are happy with the way your documentation looks you go into folder ``bu
 
 That's all there is to know !
 
-Contribute
------------
-
-Picnic is an open source software originally written by Zulko_ and released under the MIT licence. Please help make picnic better, for instance by expanding the capabilities, providing advice for sounder standards if you are an experienced module-maker, reporting bugs, etc. We love forks and pull resquests !
-Picnic is being developped on Github_, that's where you should go for troubleshooting and bug reports.
 
 .. _Zulko : https://github.com/Zulko
 .. _Github : https://github.com/Zulko/picnic.py
