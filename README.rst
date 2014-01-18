@@ -1,4 +1,3 @@
-
 Picnic.py
 ==========
 
@@ -36,7 +35,7 @@ Installation and customization
 
 Picnic.py requires the awesome docopt_ package, that you can install with the classic ::
 
-    pip python install docopt 
+    pip install docopt 
 
 To install Picnic.py, get a zip of the code, for instance on Github_, and unzip it in some folder. You can have a look at the file templates ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files``, and customize them as you like.
 
