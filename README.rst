@@ -37,17 +37,15 @@ Picnic.py requires the awesome docopt_ package, that you can install with the cl
 
     pip install docopt 
 
-To install Picnic.py, get a zip of the code, for instance on Github_, and unzip it in some folder. You can have a look at the file templates ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files``, and customize them as you like.
+To install Picnic.py, get a zip of the code, for instance on Github_, and unzip it in some folder (that you will keep afterwards). You can have a look at the file templates ``README.rst``, ``setup.py`` etc in subfolder ``picnic/files``, and customize them as you like.
 
 Then, in the folder of the ``setup.py``, type ::
 
-    sudo python setup.py install
-
-or even better, use this command instead, it will enable you to change the templates even after the installation: :: 
-
     sudo python setup.py develop
 
-And you are done ! Note that you can also install ``picnic.py`` with ``pip`` but it is not recommended as it doesn't allow you to change the templates.
+And you are done ! You can modigy the templates in the ``picnic/files`` directory anytime after the installation.
+
+For the moment installations with ``python setup.py install`` or ``pip install picnic`` are buggy (I am not very good at file managing with python, help welcome).
 
 
 Contribute !
@@ -57,7 +55,7 @@ Picnic.py is an open source software originally written by Zulko_ and released u
 
 And speaking about branches, there is `another one <https://github.com/jcsaaddupuy/picnic.py/tree/dev>`_ being actively developed.
 
-Picnic is being developped on Github_. That's where you should go for troubleshooting and bug reports.
+Picnic is being developed on Github_. That's where you should go for troubleshooting and bug reports.
 
 
 
@@ -113,7 +111,6 @@ The documentation source will be in the ``docs`` directory and the built (html) 
 For convenience these two lines are already written in the ``docs/make_html.sh`` file, therefore you only need to type ::
     
     ./make_html.sh
-
 
 Creating a git repository
 ''''''''''''''''''''''''''''''''''
@@ -171,6 +168,20 @@ When you are happy with the way your documentation looks you go into folder ``bu
 
 That's all there is to know !
 
+
+Uploading your package on Pypi
+'''''''''''''''''''''''''''''''''
+
+Uploading your package on pypi offers it some visibility and enables users to install it easily with the command ``pip install``.
+
+To upload the package, go in the directory of the ``setup.py`` and type ::
+
+    (sudo) python setup.py register
+    (sudo) python setup.py sdist upload
+
+Each time you want to update the code on Pypi, you must first increment the version number in your setup.py, for instance 0.1.0->0.1.1 . Then you just write ::
+    
+    (sudo) python setup.py sdist upload
 
 .. _Zulko : https://github.com/Zulko
 .. _Github : https://github.com/Zulko/picnic.py
