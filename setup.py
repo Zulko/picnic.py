@@ -11,4 +11,5 @@ setup(name='picnic',
      license='see LICENSE.txt',
      keywords="python module package template engine setuptools",
      scripts=['picnic/picnic.py'],
+     install_requires = ['docopt'],
      packages= find_packages(exclude='docs'))	
