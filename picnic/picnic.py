@@ -201,7 +201,7 @@ if __name__ == "__main__":
         # it and rebuild it
         built_docs_dir = os.path.join('..','built_docs')
         if not os.path.exists(built_docs_dir):
-            os.mkdir(buit_docs_dir)
+            os.mkdir(built_docs_dir)
         
         built_docs_html_dir = os.path.join(built_docs_dir,'html')
         if os.path.exists(built_docs_html_dir):
