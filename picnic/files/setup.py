@@ -3,8 +3,10 @@ ez_setup.use_setuptools()
 
 from setuptools import setup, find_packages
 
+exec(open('$PACKAGE_NAME/version.py').read()) # loads __version__
+
 setup(name='$PACKAGE_NAME',
-      version='0.1.0',
+      version=__version__,
       author='$AUTHOR',
     description='',
     long_description=open('README.rst').read(),

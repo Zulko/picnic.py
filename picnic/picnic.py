@@ -118,6 +118,8 @@ if __name__ == "__main__":
                   [name_l,name_l +'.py'], replace = infos)
         copy_file(['code','__init__.py'],
                   [name_l,"__init__.py"], replace = infos)
+        copy_file(['code','version.py'],
+                  [name_l,"version.py"], replace = infos)
     
     
     
