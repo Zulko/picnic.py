@@ -1,7 +1,7 @@
 Picnic.py
 ==========
 
-**Note:** This is getting rather old and unmaintained. Prefer [cookiecutter](https://github.com/cookiecutter/cookiecutter) for a project template engine.
+**Note:** This is getting rather old and unmaintained. Prefer `cookiecutter <https://github.com/cookiecutter/cookiecutter>`_.
 
 Picnic.py helps you write python packages: ::
     
